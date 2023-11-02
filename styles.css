@@ -1,0 +1,242 @@
+body {
+    --bg-color: #808080;
+    --bg-size: 20px;
+    --bg-position: calc(var(--bg-size) / 2);
+    --main-text-color: snow;
+    --primary-color: Black;
+    --rad-color: #;
+    --rad-percent: 30%;
+    --secondary-color: crimson;
+  
+    color: var(--main-text-color);
+    font-family: "Fira Sans", sans-serif;
+    background-color: var(--bg-color);
+    background-image:
+      radial-gradient(var(--rad-color) var(--rad-percent), transparent 0%),
+      radial-gradient(var(--rad-color) var(--rad-percent), transparent 0%);
+    background-position: 0 0, var(--bg-position) var(--bg-position);
+    background-size: var(--bg-size) var(--bg-size);
+    text-align: center;
+  }
+  
+  h1 {
+    font-family: "Fira Mono", monospace;
+    font-size: 5em;
+    margin: 0;
+  }
+  h1 span {
+    --rotation: 3deg;
+    display: inline-block;
+    margin: 0 -0.3em;
+    padding: 0.15em;
+  }
+  h1 span:nth-of-type(odd) {
+    background: var(--primary-color);
+    transform: rotate(calc(var(--rotation) * -1));
+  }
+  h1 span:nth-of-type(even) {
+    background: var(--secondary-color);
+    transform: rotate(var(--rotation));
+  }
+  
+  h2 {
+    font-family: "Satisfy", cursive;
+    font-size: 4em;
+    margin: 0.1em 0;
+    
+  }
+  
+  h3 {
+    font-family: "Sriracha", cursive;
+    font-size: 3em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  h4 {
+    font-family: "Kaushan Script", cursive;
+    font-size: 2.5em;
+    margin: 0;
+  }
+  
+  p {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  .menu {
+    background-color: var(--primary-color);
+    display: grid;
+    margin: 2em auto;
+    padding: 2em 1em;
+    position: relative;
+    row-gap: 2em;
+    width: 32em;
+  }
+  .menu::before {
+    background-color: #dc143c;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 2em;
+    transform: rotate(-3deg);
+    z-index: -1;
+  }
+  
+  .item {
+    margin-bottom: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  
+  /* WIDE SCREENS / PRINT */
+  @media (min-width: 1024px), print {
+    .menu {
+      width: 60em;
+    }
+    .menu::before {
+      transform: rotate(-6deg);
+    }
+  
+    .course {
+      column-gap: 2em;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .course h3 {
+      grid-column: 1 / span 2;
+    }
+  }
+  
+  /* PRINT */
+  @media print {
+    body {
+      background-color: white;
+      background-image: none;
+      color: black;
+    }
+  
+    h1 {
+      font-family: "Fira Sans", sans-serif;
+      font-size: 48px;
+    }
+    h1 span {
+      background-color: white !important;
+      margin: 0;
+      padding: 0;
+      transform: none !important;
+    }
+  
+    h2 {
+      font-size: 40px;
+      margin: 0;
+    }
+  
+    h3 {
+      font-size: 36px;
+    }
+  
+    h4 {
+      font-size: 32px;
+    }
+  
+    p {
+      font-size: 20px;
+    }
+  
+    .header-icon,
+    #dark_toggle + label {
+      display: none !important;
+    }
+  
+    .menu {
+      background-color: black;
+      margin: 0 auto;
+      padding: 0;
+      row-gap: 24px;
+      width: 100%;
+    }
+    .menu::before {
+      display: none;
+    }
+  
+    .course {
+      column-gap: 24px;
+    }
+  
+    .item {
+      margin-bottom: 16px;
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+  }
+  .button {
+    border-radius: 4px;
+    background-color: crimson;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }  
+  .loader{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+.loader--hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.loader::after{
+    content:"";
+    width: 75px;
+    height: 75px;
+    border: 15px solid white;
+    border-top-color:crimson ;
+    border-radius: 50%;
+    animation: loading 2s ease infinite;
+}
+@keyframes loading {
+    from {transform:rotate(0turn)}
+    to {transform:rotate(1turn)}
+
+}
